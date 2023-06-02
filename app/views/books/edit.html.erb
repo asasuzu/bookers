@@ -1,16 +1,20 @@
 <h1>Editing Book</h1>
 <%= form_with model: @book do |f| %>
+<div class="field">
+  <label>Title</label>
+  <%= f.text_field :title %>
+</div>
 
- <label>Title</label>
- <%= f.text_field :title %>
+<div class="field">
+  <label>Body</label>
+  <%= f.text_field :body %>
+</div>
 
- <label>Body</label>
- <%= f.text_field :body %>
+<div class="actions">
+  <%= f.submit 'Update Book' %>
+</div>
 
- <%= f.submit 'Update Book' %>
  
- <%= link_to "Show", book_path(@book.id) %>
-" | "
-<a href="/books">Back</a>
+ <%= link_to "Show", book_path(@book.id) %>&nbsp;|&nbsp;<a href="/books">Back</a>
 
 <% end %>

@@ -1,21 +1,28 @@
 class BooksController < ApplicationController
 
   def new
-    #viewへ渡すためのインスタント変数
-    # @book = Book.new
+   
   end
 
   def create
-    #データを受け取り新規登録するためのインスタンス作成
-    book = Book.new(book_params)
+    #データを受け取り新規登録するためのインスタンス作成 
+    @book = Book.new(book_params)
     #データをデータベースに保存するためのsaveメソッド実行
-    book.save
-    #詳細画面へリダイレクト
-    redirect_to book_path(book.id)
+    if @book.save
+      #フラッシュメッセージを定義
+      flash[:notice] = "Book was successfully created."
+      #詳細画面へリダイレクト
+
+      redirect_to book_path(@book.id)
+    else
+      @books = Book.order("id")
+      render :index
+    end
   end
 
   def index
     @books = Book.order("id")
+    @book = Book.new
   end
 
   def show

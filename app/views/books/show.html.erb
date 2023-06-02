@@ -1,5 +1,7 @@
-<p><strong>Title:</strong><%= @book.title %></p>
-<p><strong>Body:</strong><%= @book.body %></p>
-<%= link_to "Edit", edit_book_path(@book.id) %>
-" | 
-<a href="/books">Back</a>
+<p id="notice">
+  <%= flash[:notice] %>
+</p>
+
+<p><strong>Title:&nbsp;</strong><%= @book.title %></p>
+<p><strong>Body:&nbsp;</strong><%= @book.body %></p>
+<%= link_to "Edit", edit_book_path(@book.id) %>&nbsp;|&nbsp;<a href="/books">Back</a>
