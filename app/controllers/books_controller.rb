@@ -12,7 +12,6 @@ class BooksController < ApplicationController
       #フラッシュメッセージを定義
       flash[:notice] = "Book was successfully created."
       #詳細画面へリダイレクト
-
       redirect_to book_path(@book.id)
     else
       @books = Book.order("id")
@@ -36,12 +35,14 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params)
+    flash[:notice] = "Book was successfully updated."
     redirect_to book_path(book.id)
   end
 
   def destroy
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = "Book was successfully destroyed."
     redirect_to '/books'
   end
 
